@@ -10,7 +10,8 @@ public class Solution_MV {
 			{
 				arr1.removeElementAt(i);
 				count++;
-				i=0;
+				i=i-1;
+				arr1_size = arr1_size-1;
 				
 				
 			}
