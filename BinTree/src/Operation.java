@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Operation {
 	
@@ -22,8 +23,20 @@ public class Operation {
 		}
 		System.out.println("Enter the lookup item in the tree !");
 		int lookup_item = scn.nextInt();
+		scn.close();
 		boolean value = bt.lookup(lookup_item);
 		System.out.println( "Does "+lookup_item +" exist in the tree that we created ? " + value );
+		System.out.println("the maxDepth of the tree is : " + bt.maxDepth());
+		
+		Vector <Integer> v = bt.preOrder_traversal();
+		int v_elements = v.capacity();
+		System.out.println("printing the pre order traversal ");
+		for (int i = 0; i < v_elements+1; i++)
+		{
+			
+			System.out.println(v.elementAt(i));
+		}
+		
 
 }
 }

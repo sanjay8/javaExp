@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Vector;
 
 // BinaryTree.java 
 public class BinaryTree { 
@@ -100,7 +100,83 @@ public class BinaryTree {
 	  }
 	  }
   }	
+  
+// finds the depth using the recursive function and a helper recursive function 
+  
+  public int maxDepth()
+  {
+	  return (maxDepth(root));
+  }
+  
+  public int maxDepth(Node node)
+  {
+	  if ( node == null )
+	  {
+		  return(0);
+	  }
+	  else 
+	  {
+		  int l_depth = maxDepth(node.left);
+		  int r_depth = maxDepth (node.right);
+		  
+		  return ( Math.max(l_depth,r_depth)+1);
+	  }
+  }
+  
+  
+
+
+/* Recursive function to invert the binary tree 
+ * using a helper function and pre - order traversal
+ * traversed node stored in a vector 
+ */
+
+	public Vector<Integer> preOrder_traversal ()
+	{
+		return (preOrder_traversal(root));
+	}
+	
+	public Vector < Integer> preOrder_traversal(Node node)
+	{
+		if (node == null )
+		{
+			return null ;	
+		}
+		
+		else{
+			Vector <Integer> vec = new Vector<Integer> ();
+			vec.addElement(node.data);
+			preOrder_traversal(node.left);
+			preOrder_traversal(node.right);
+			return vec; 
+		}
+	}
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
