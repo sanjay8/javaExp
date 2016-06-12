@@ -4,7 +4,7 @@ import java.util.Vector;
 public class BinaryTree { 
   // Root node pointer. Will be null for an empty tree. 
   private Node root; 
- 
+  Vector <Integer> vec = new Vector<Integer> ();
 
   /* 
    --Node-- 
@@ -124,7 +124,42 @@ public class BinaryTree {
   }
   
   
-
+/*Recursive insertion for the inversion of the tree
+ * nesting a pre order insertion
+ */
+  
+  public void invert_tree()
+  {
+	  Vector <Integer> v = preOrder_traversal();
+	  int v_elements = v.size();
+	  root = null ;
+	  for (int i = 0; i < v_elements; i++)
+		{
+			
+		 root = invert_tree (root,v.elementAt(i));
+		}
+	 
+  }
+  
+  public Node invert_tree(Node node,int data_item)
+  {
+	  if (node == null)
+	  {
+		  node = new Node(data_item);
+	  }
+	  else
+	  {
+		  if (node.data >= data_item)
+		  {
+			  invert_tree(node.right, data_item);
+		  }
+		  else{
+			  invert_tree(node.left, data_item);
+		  }
+	  }
+	  
+	  return node;
+  }
 
 /* Recursive function to invert the binary tree 
  * using a helper function and pre - order traversal
@@ -133,7 +168,7 @@ public class BinaryTree {
 
 	public Vector<Integer> preOrder_traversal ()
 	{
-		return (preOrder_traversal(root));
+		return preOrder_traversal(root);
 	}
 	
 	public Vector < Integer> preOrder_traversal(Node node)
@@ -144,7 +179,7 @@ public class BinaryTree {
 		}
 		
 		else{
-			Vector <Integer> vec = new Vector<Integer> ();
+			
 			vec.addElement(node.data);
 			preOrder_traversal(node.left);
 			preOrder_traversal(node.right);
@@ -154,37 +189,3 @@ public class BinaryTree {
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
